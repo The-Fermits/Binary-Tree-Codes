@@ -16,3 +16,6 @@ Node* lca_binary_tree (Node* root , Node* p , Node* q) {
     return left ? left : right ;
 }
 
+TIME COMPLEXITY : O(N)
+Space : O(H)    === logn 
+
