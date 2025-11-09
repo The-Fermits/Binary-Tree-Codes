@@ -1,0 +1,18 @@
+
+
+Node* lca_binary_tree (Node* root , Node* p , Node* q) {
+    if(!root) return root ; 
+    if(root==p || root==q) return root;
+
+    Node* left = lca_binary_tree(root->left, p, q) ;
+    Node* right = lca_binary_tree(root->right, p, q) ;
+
+    if(left && right) {
+        // one node is on left side and other on right side 
+        return root ;
+    }
+
+    // otherwise both node is either on one of these sides
+    return left ? left : right ;
+}
+
