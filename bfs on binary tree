@@ -1,0 +1,31 @@
+
+class Node {
+public : 
+int data ;
+Node* left ; 
+Node* right ;
+};
+
+
+void bfs (Node* root) {
+    if(!root) return ; 
+    vector<vector<Node*>> ans ; 
+    deque<pair<int,Node*>> dq ; 
+
+    dq.push_back({0,root}) ; 
+    map<int,vector<Node*>> mp ;
+
+    while(!dq.empty()) {
+        int d = dq.front().first;
+        Node* node = dq.front().second ; 
+
+        dq.pop_front() ; 
+
+        mp[d].push_back(node) ;
+
+        if(node->left) dq.push_back({d+1,node->left}) ;
+        if(node->right) dq.push_front({d,node->left}) ;
+    }
+
+}
+
