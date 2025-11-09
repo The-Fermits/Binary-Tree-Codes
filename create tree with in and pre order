@@ -1,0 +1,33 @@
+
+class Node {
+public : 
+char data ;
+Node* left ; 
+Node* right ;
+
+Node(char c)  {
+    this->data = c ;
+}
+};
+
+vector<char> pre , in ;
+map<char, int> mp ; // index - hashed
+
+Node* create_tree (int l_in , int r_in , int l_pre, int r_pre) {
+// pre order gives root node and in order gives the breaking pt for left and right 
+if(r_in > l_in ) return nullptr; 
+
+// need hashing for index in in-order 
+
+char root_val = pre[l_pre] ; 
+int breaking_pt = mp[root_val] ; 
+
+Node* root = new Node(root_val) ;
+
+root->left = create_tree (l_in , breaking_pt-1 , l_pre + 1, l_pre +(breaking_pt-l_in)) ;
+root->right = create_tree (breaking_pt+1 , r_in , l_pre + (breaking_pt-l_in)+1, r_pre) ;
+
+return root ;
+}
+
+
