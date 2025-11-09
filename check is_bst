@@ -1,0 +1,37 @@
+
+class Node {
+public : 
+int data ;
+Node* left ; 
+Node* right ;
+
+Node(int c)  {
+    this->data = c ;
+}
+};
+
+vector<char> pre , in ;
+map<char, int> mp ; // index - hashed
+bool is_bst = true ;
+
+pii check (Node* root) {
+    
+    // null 
+    if(!root) {}
+
+    int val = root->data ; 
+
+    pii left = check(root->left) ;
+    pii right = check(root->right) ;
+
+    if(val>=right.second) is_bst = false ; 
+    if(val<=left.first) is_bst = false ; 
+    
+
+    int mn = min(val,left.first) ; 
+    int mx = max(val,right.second) ;
+
+    
+
+}
+
