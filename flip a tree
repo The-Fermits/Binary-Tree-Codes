@@ -1,0 +1,11 @@
+
+
+void flip (Node* root) {
+    if(!root) return  ; 
+
+    swap(root->left , root->right) ; 
+
+    flip(root->left) ; 
+    flip(root->right) ;
+
+}
